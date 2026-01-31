@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8205353417657363843}
   - component: {fileID: 1748167465325030082}
   - component: {fileID: 2443473312272661123}
-  - component: {fileID: 76504942820190158}
   m_Layer: 0
   m_Name: weapon
   m_TagString: Untagged
@@ -110,17 +109,3 @@ MonoBehaviour:
   reloadTime: 2.5
   player: {fileID: 0}
   distance: 0.2
---- !u!114 &76504942820190158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4512707932071660517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1119e15b2100eeb438f63c0fd57f6e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletPool
-  bulletPrefab: {fileID: 6284510188275927444, guid: 280d669a13d433a479ec53838723607d, type: 3}
-  bulletList: []

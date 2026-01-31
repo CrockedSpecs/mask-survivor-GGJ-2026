@@ -351,7 +351,8 @@ GameObject:
   - component: {fileID: 1875526813}
   - component: {fileID: 1875526812}
   - component: {fileID: 1875526814}
-  - component: {fileID: 1875526815}
+  - component: {fileID: 1875526816}
+  - component: {fileID: 1875526817}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -447,20 +448,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OrbitingWeapon
   orbitingPrefab: {fileID: 4512707932071660517, guid: e8b1c050aeabb814ba725b60293ce096, type: 3}
   distance: 1
---- !u!114 &1875526815
+--- !u!114 &1875526816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875526811}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1119e15b2100eeb438f63c0fd57f6e1c, type: 3}
+  m_Script: {fileID: 11500000, guid: f072b40a479049b479a7e0a7e6ed5006, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletPool
-  bulletPrefab: {fileID: 6284510188275927444, guid: 280d669a13d433a479ec53838723607d, type: 3}
-  bulletList: []
+  m_EditorClassIdentifier: Assembly-CSharp::basicmove
+  moveSpeed: 5
+--- !u!50 &1875526817
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875526811}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!1001 &5844356221274166804
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.47891
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.83091
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783529742514579, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2551478904223115831, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
+      propertyPath: m_Name
+      value: bulletPool
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e4e2d5eee0690a40b3fe6325a26c210, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -468,3 +552,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1875526813}
+  - {fileID: 5844356221274166804}
