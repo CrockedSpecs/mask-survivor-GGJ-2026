@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehaviour
   bulletSpeed: 15
+  bulletData: {fileID: 11400000, guid: 53616369c51fcbb4e9e80675ef4aff4a, type: 2}
 --- !u!58 &5213394914557811916
 CircleCollider2D:
   m_ObjectHideFlags: 0
