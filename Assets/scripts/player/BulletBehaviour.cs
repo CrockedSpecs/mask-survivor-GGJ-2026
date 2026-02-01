@@ -2,14 +2,15 @@ using Unity.Mathematics;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class BulletBehaviour : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private int bulletSpeed ;
+    [SerializeField] bulletData bulletData;
     private Rigidbody2D rb;
     private int damage = 1;
     private void Awake()
     {
+        bulletSpeed = Mathf.RoundToInt(bulletData.Speed);
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
     }
