@@ -171,3 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBehaviour
   player: {fileID: 0}
   moveSpeed: 3
+  health: 1
+  damage: 1
+  isPossesable: 0

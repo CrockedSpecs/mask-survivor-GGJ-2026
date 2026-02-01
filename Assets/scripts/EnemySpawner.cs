@@ -7,29 +7,44 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int maxEnemies;
     [SerializeField] private int enemiesPerSecond;
     public static int enemyActiveCounter;
+
     private int fibPrev = 5;
     private int fibCurrent = 8;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Start()
     {
+        // Initialize values immediately
         maxEnemies = fibCurrent;
         enemiesPerSecond = 1;
         enemyActiveCounter = 0;
 
+        // But DON'T start spawning yet
+        StartCoroutine(WaitForPlayerThenStart());
+    }
+
+    private IEnumerator WaitForPlayerThenStart()
+    {
+        // Wait until Player singleton exists
+        while (Player.Instance == null)
+            yield return null;
+
+        // Optional but recommended: your spawn logic uses Camera.main
+        while (Camera.main == null)
+            yield return null;
+
+        // Now it's safe to start everything
         StartCoroutine(SpawnEnemy());
         StartCoroutine(addEnemiesPerSecond());
         StartCoroutine(IncreaseMaxEnemiesFibonacci());
-
-
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Debug.Log("enemy Active: "+ enemyActiveCounter);
-        Debug.Log("enemies Per Second: " + enemiesPerSecond);
-        Debug.Log("max enemies: " + maxEnemies);
+        //Debug.Log("enemy Active: " + enemyActiveCounter);
+        //Debug.Log("enemies Per Second: " + enemiesPerSecond);
+        //Debug.Log("max enemies: " + maxEnemies);
     }
+
     public Vector3 GetSpawnPosition()
     {
         Camera cam = Camera.main;
@@ -42,7 +57,6 @@ public class EnemySpawner : MonoBehaviour
 
         return pos;
     }
-
 
     IEnumerator SpawnEnemy()
     {
@@ -61,6 +75,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
+
     IEnumerator addEnemiesPerSecond()
     {
         while (true)

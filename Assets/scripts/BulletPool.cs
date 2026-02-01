@@ -1,59 +1,64 @@
-using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic; 
 
 public class BulletPool : MonoBehaviour
 {
     public static BulletPool instance;
+
     [SerializeField] private GameObject bulletPrefab;
-    private int poolSize = 15;
+    [SerializeField] private int poolSize = 15;
     [SerializeField] private List<GameObject> bulletList = new List<GameObject>();
 
+    private bool poolReady = false;
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (instance == null) instance = this;
+        else { Destroy(gameObject); return; }
     }
-    
-    void Start()
+
+    private IEnumerator Start()
     {
+        // Espera hasta que el Player singleton exista
+        while (Player.Instance == null)
+            yield return null;
+
         AddBulletsToPool(poolSize);
+        poolReady = true;
     }
 
     private void AddBulletsToPool(int amount)
     {
         for (int i = 0; i < amount; i++)
         {
-            GameObject bullet = Instantiate(bulletPrefab);
+            // Instancia como hijo desde el comienzo
+            GameObject bullet = Instantiate(bulletPrefab, transform);
+
+            // Asegúrate que quede inactiva en el pool
             bullet.SetActive(false);
+
             bulletList.Add(bullet);
-            bullet.transform.parent = transform;
         }
     }
 
     public GameObject RequestBullet()
     {
+        if (!poolReady)
+        {
+            // Si disparan antes de estar listo, devuelve null (o log si prefieres)
+            // Debug.LogWarning("BulletPool aún no está listo (Player.Instance todavía no existe).");
+            return null;
+        }
+
         for (int i = 0; i < bulletList.Count; i++)
         {
             if (!bulletList[i].activeSelf)
-            {
                 return bulletList[i];
-            }
         }
+
+        // Expandimos pool y devolvemos la nueva bala INACTIVA
         AddBulletsToPool(1);
-        bulletList[bulletList.Count - 1].SetActive(true);
-        return bulletList[bulletList.Count-1];
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return bulletList[bulletList.Count - 1];
     }
 }
