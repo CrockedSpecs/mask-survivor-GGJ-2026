@@ -12,6 +12,8 @@ public class ShootBehaviour : MonoBehaviour
     private float shootTimer;
     private bool isReloading = false;
 
+
+
     [Header("Weapon Orbit Settings")]
     [SerializeField] private Transform player;
 

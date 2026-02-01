@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc7a79f6a3d30745808599fe3521ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  maxEnemies: 0
+  enemiesPerSecond: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,9 +872,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 1056739367}
   - {fileID: 5844356221274166804}
   - {fileID: 619394802}
   - {fileID: 1875526813}
   - {fileID: 8805876919205171588}
   - {fileID: 9053819850892422032}
-  - {fileID: 1056739367}

@@ -14,8 +14,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnEnable()
     {
+        EnemySpawner.enemyActiveCounter++;
         player = GameObject.FindGameObjectWithTag("Player");
     }
+
+    private void OnDisable()
+    {
+        EnemySpawner.enemyActiveCounter--;
+        CancelInvoke();
+
+    }
+
 
     private void FixedUpdate()
     {
