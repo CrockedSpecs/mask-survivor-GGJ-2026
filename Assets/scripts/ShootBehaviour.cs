@@ -3,18 +3,17 @@ using UnityEngine.InputSystem;
 
 public class ShootBehaviour : MonoBehaviour
 {
-
-    [Header("shooting Settings")]
+    [Header("Shooting Settings")]
     [SerializeField] private float cadency = 0.8f;
     [SerializeField] private int maxAmmo = 6;
     [SerializeField] private float reloadTime = 1.5f;
+
     private int ammo;
     private float shootTimer;
     private bool isReloading = false;
 
-    [Header("weapon orbit settings")]
+    [Header("Weapon Orbit Settings")]
     [SerializeField] private Transform player;
-    [SerializeField] private float distance = 0.2f;
 
     private void Start()
     {
@@ -22,11 +21,12 @@ public class ShootBehaviour : MonoBehaviour
         shootTimer = cadency;
     }
 
-    void Update()
+    private void Update()
     {
         shootTimer += Time.deltaTime;
         if (isReloading) return;
-        if (ammo > 0 && !isReloading)
+
+        if ((ammo > 0) && !isReloading)
         {
             Shoot();
         }
@@ -34,11 +34,9 @@ public class ShootBehaviour : MonoBehaviour
         {
             Reload();
         }
-
-
     }
 
-    void Shoot()
+    private void Shoot()
     {
         bool click = Mouse.current.leftButton.wasPressedThisFrame;
         bool hold = Mouse.current.leftButton.isPressed;
@@ -56,9 +54,9 @@ public class ShootBehaviour : MonoBehaviour
             );
             mouseWorldPos.z = 0f;
 
-            Vector3 direction = (mouseWorldPos - transform.position).normalized;
-            bullet.GetComponent<BulletBehaviour>().SetDirection(direction);
+            Vector2 direction = (mouseWorldPos - transform.position).normalized;
             bullet.SetActive(true);
+            bullet.GetComponent<BulletBehaviour>().SetDirection(direction);
 
 
             shootTimer = 0f;
@@ -66,7 +64,7 @@ public class ShootBehaviour : MonoBehaviour
         }
     }
 
-    void Reload()
+    private void Reload()
     {
         if (isReloading) return;
 
@@ -74,7 +72,7 @@ public class ShootBehaviour : MonoBehaviour
         Invoke(nameof(FinishReload), reloadTime);
     }
 
-    void FinishReload()
+    private void FinishReload()
     {
         ammo = maxAmmo;
         isReloading = false;
